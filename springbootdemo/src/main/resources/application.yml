@@ -1,0 +1,15 @@
+server:
+ port: 8081
+
+student:
+ name: 张三
+ age: 18
+ subjects:
+  - chinese
+  - math
+  - english
+ friend:
+  name: 李四
+  age: 18
+  subject:
+   - PE
