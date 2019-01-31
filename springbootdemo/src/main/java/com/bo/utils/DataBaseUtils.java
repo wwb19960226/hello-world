@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * 关于数据库的工具操作类
+ * @param <T>
+ */
 @Component
 public class DataBaseUtils<T> {
 
