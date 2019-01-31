@@ -1,6 +1,7 @@
 package com.bo;
 
 
+import com.bo.mapper.MapperDemo;
 import com.bo.pojo.Student;
 import com.bo.pojo.Teacher;
 import com.bo.utils.DataBaseUtils;
@@ -23,6 +24,9 @@ public class TestSpring {
     @Autowired
     private DataBaseUtils utils;
 
+    @Autowired
+    private MapperDemo mapperDemo;
+
 
     @Test
     public void test01(){
@@ -35,5 +39,16 @@ public class TestSpring {
         utils.batchInstert(teachers);
     }
 
+    /**
+     *测试mybatis配置是否可用
+     */
+    @Test
+    public void queryStudentsTest(){
+        List<Student> students = mapperDemo.queryStudents();
+        for(Student student:students){
+            System.out.println("===========================");
+            System.out.println(student.toString());
+        }
+    }
 
 }
