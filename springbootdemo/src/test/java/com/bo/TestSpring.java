@@ -11,12 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TestSpring {
+
+    /*private final Logger log = LoggerFactory.getLogger(TestSpring.class);*/
 
     @Autowired
     private Student student;
@@ -29,13 +32,14 @@ public class TestSpring {
 
 
     @Test
-    public void test01(){
+    public void test01() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         List<Teacher> teachers = new ArrayList<>();
         Teacher teacher = new Teacher();
         teacher.setName("嘉德");
         teacher.setAge(22);
         teacher.setSubject("计算机");
         teachers.add(teacher);
+       /* log.warn(teacher.getName());*/
         utils.batchInstert(teachers);
     }
 

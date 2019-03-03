@@ -2,12 +2,11 @@ package com.bo;
 
 
 import com.bo.pojo.Student;
+import com.bo.pojo.Teacher;
 import org.junit.Test;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class TestDemo {
 
@@ -180,5 +179,84 @@ public class TestDemo {
         System.out.println(i.toString());
     }
 
+    /**
+     * 确认class文件在方法区中存放
+     * @throws ClassNotFoundException
+     */
+    @Test
+    public void test06() throws ClassNotFoundException {
+        Class<Teacher> teacherClass = Teacher.class;
+        Class<?> teacher = Class.forName("com.bo.pojo.Teacher");
+        System.out.println(teacherClass == teacher);
+
+        Integer i1 = 127;
+        int i2 = 127;
+        System.out.println(i2 == i1);
+
+        Integer i3 = new Integer(-129);
+        int i4 = new Integer(-129);
+        System.out.println(i4 == i3);
+
+        String s = "11";
+        String s1 = new String("11");
+        System.out.println(s1 == s);
+
+        Date date = new Date();
+        Date date1 = new Date();
+        System.out.println(date.equals(date1));
+
+    }
+
+    /**
+     *两种方式遍历Map
+     */
+    @Test
+    public void test07(){
+        Map<String, String> map = new HashMap<>();
+        map.put("key","value");
+        map.put("键","值");
+        Set<String> set = map.keySet();
+        Iterator<String> iterator = set.iterator();
+        for(;iterator.hasNext();){
+            String next = iterator.next();
+            System.out.println("key:"+next+";value:"+map.get(next));
+        }
+
+        Set<Map.Entry<String, String>> entries = map.entrySet();
+        Iterator<Map.Entry<String, String>> iterators = entries.iterator();
+        for(;iterators.hasNext();){
+            Map.Entry<String, String> next = iterators.next();
+            System.out.println("key:"+next.getKey()+";value:"+next.getValue());
+        }
+    }
+
+    /**
+     * 按年龄对学生呢个进行排序
+     */
+    @Test
+    public void test08(){
+        Student student1 = new Student();
+        student1.setAge(18);
+        Student student2 = new Student();
+        student2.setAge(19);
+        Student student3 = new Student();
+        student3.setAge(17);
+        List<Student> students = new ArrayList<>();
+        students.add(student1);
+        students.add(student2);
+        students.add(student3);
+        Collections.sort(students,new Comparator<Student>(){
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.getAge().compareTo(o2.getAge());
+            }
+        });
+        for(Student student:students){
+            System.out.println(student.getAge());
+        }
+
+
+
+    }
 
 }

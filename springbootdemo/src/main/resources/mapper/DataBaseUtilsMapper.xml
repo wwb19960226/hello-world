@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bo.mapper.utils.DataBaseUtilsMapper">
+    <!--关于这块用$符号的原因，用#会导入“”符号，从而导致插入失败-->
+    <insert id="batchInsert">
+        insert into ${tableName}
+        <foreach collection="columns" index="index" separator="," open="(" close=")" item="item">
+            ${item}
+        </foreach>
+        values
+        <foreach collection="mapList" index="index" separator="," item="map">
+            <foreach collection="map" index="key" separator="," open="(" close=")" item="attribute">
+                #{attribute}
+            </foreach>
+        </foreach>;
+    </insert>
+</mapper>
