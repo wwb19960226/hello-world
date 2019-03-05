@@ -14,4 +14,33 @@
             </foreach>
         </foreach>;
     </insert>
+    
+    <update id="batchUpdate">
+        <foreach collection="updateObjs" item="item" separator=";">
+            update ${tableName}
+            <set>
+                <foreach collection="item" index="key" item="value" separator=",">
+                    <if test="key != 'f_id'">
+                        ${key} = #{value}
+                    </if>
+
+                </foreach>
+            </set>
+            where f_id = #{item.f_id}
+        </foreach>
+    </update>
+
+    <select id="queryUpdateAttribute" resultType="map">
+        select
+        f_id as id,
+        <foreach collection="linkedMap" item="column" separator="," index="attribute">
+            ${column} as #{attribute}
+        </foreach>
+        from
+        ${tableName}
+        where f_id in
+        <foreach collection="idList" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

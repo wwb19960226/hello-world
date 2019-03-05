@@ -38,7 +38,12 @@ public class TestSpring {
         teacher.setName("嘉德");
         teacher.setAge(22);
         teacher.setSubject("计算机");
+        Teacher teacher1 = new Teacher();
+        teacher1.setName("月色");
+        teacher1.setAge(21);
+        teacher1.setSubject("IT");
         teachers.add(teacher);
+        teachers.add(teacher1);
        /* log.warn(teacher.getName());*/
         utils.batchInstert(teachers);
     }
@@ -53,6 +58,25 @@ public class TestSpring {
             System.out.println("===========================");
             System.out.println(student.toString());
         }
+    }
+
+    @Test
+    public void test03() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
+        List<Teacher> teachers = new ArrayList<>();
+        Teacher teacher = new Teacher();
+        teacher.setId(new Long(19));
+        teacher.setName("嘉德亲王");
+        teacher.setAge(22);
+        teacher.setSubject("计算机");
+        Teacher teacher1 = new Teacher();
+        teacher1.setId(new Long(20));
+        teacher1.setName("月色修魔");
+        teacher1.setAge(21);
+        teacher1.setSubject("IT");
+        teachers.add(teacher);
+        teachers.add(teacher1);
+        /* log.warn(teacher.getName());*/
+        utils.batchUpdate(teachers,Teacher.class);
     }
 
 }

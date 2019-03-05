@@ -7,15 +7,20 @@ import com.bo.annotate.DbTable;
 public class Teacher {
 
     /**
+     * 主键ID
+     */
+    private Long id;
+
+    /**
      * 姓名
      */
-    @DbColumn(name = "f_name",canModify = false)
+    @DbColumn(name = "f_name",canModify = true)
     private String name;
 
     /**
      * 年龄
      */
-    @DbColumn(name = "f_age",canModify = false)
+    @DbColumn(name = "f_age",canModify = true)
     private Integer age;
 
     /**
@@ -46,5 +51,13 @@ public class Teacher {
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

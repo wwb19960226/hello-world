@@ -13,7 +13,7 @@ public @interface DbColumn {
      String name() default "";
 
     /**
-     * 是否确认删除
+     * 是否确认修改
      */
     boolean canModify() default false;
 
