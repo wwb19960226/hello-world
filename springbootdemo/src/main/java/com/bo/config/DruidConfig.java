@@ -45,7 +45,6 @@ public class DruidConfig {
     }
 
     @Bean
-
     public WallConfig wallConfig() {
 
         WallConfig config = new WallConfig();

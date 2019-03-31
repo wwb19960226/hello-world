@@ -4,7 +4,9 @@ package com.bo;
 import com.bo.mapper.MapperDemo;
 import com.bo.pojo.Student;
 import com.bo.pojo.Teacher;
+import com.bo.service.RedisService;
 import com.bo.utils.DataBaseUtils;
+import com.bo.utils.ZsetRedisBaseUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +32,13 @@ public class TestSpring {
     @Autowired
     private MapperDemo mapperDemo;
 
+    @Autowired
+    private RedisService redisService;
 
-    @Test
+    @Autowired
+    private ZsetRedisBaseUtils zsetRedisBaseUtils;
+
+   @Test
     public void test01() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         List<Teacher> teachers = new ArrayList<>();
         Teacher teacher = new Teacher();
@@ -77,6 +84,29 @@ public class TestSpring {
         teachers.add(teacher1);
         /* log.warn(teacher.getName());*/
         utils.batchUpdate(teachers,Teacher.class);
+    }
+
+    /**
+     * 测试redis是否可用
+     */
+    @Test
+    public void test04(){
+        boolean set = redisService.set("test", "make");
+        System.out.println(set);
+    }
+
+    /**
+     * 测试Zset工具类是否可用
+     */
+    @Test
+    public void test05(){
+        redisService.zAdd("key1","zhangsan",1);
+        redisService.zAdd("key1","lisi",2);
+        redisService.zAdd("key1","wangwu",3);
+        redisService.zAdd("key1","zhaoliu",3);
+        Object key1 = zsetRedisBaseUtils.ZsetScoreMax("key1");
+
+        System.out.println(key1.toString());
     }
 
 }

@@ -10,6 +10,23 @@ import java.util.*;
 
 public class TestDemo {
 
+    private String name = "zhangsan";
+
+
+    @Test
+    public void test00(){
+        Double aDouble1 = new Double(31.123456789012305);
+        Double aDouble2 = new Double(31.123456789012305);
+        System.out.println(aDouble1.equals(aDouble2));
+    }
+
+    @Test
+    public void test0(){
+        System.out.println(name);
+        String name = "wangwu";
+        System.out.println(name);
+    }
+
     /**
      * 判断 101-200 之间有多少个素数，并输出所有素数
      */

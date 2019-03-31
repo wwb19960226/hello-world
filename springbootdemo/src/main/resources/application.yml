@@ -7,7 +7,7 @@ spring:
     username: root
     password: 123
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/student
+    url: jdbc:mysql://localhost:3306/student?allowMultiQueries=true
     type: com.alibaba.druid.pool.DruidDataSource
 #   数据源其他配置
     initialSize: 5
@@ -26,6 +26,14 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  redis:
+    host: 192.168.1.112
+    port: 6379
+    pool:
+      max-idle: 100
+      min-idle: 1
+      max-active: 1000
+      max-wait: -1
 mybatis:
   # 指定全局配置文件位置
   config-location: classpath:mybatis-config.xml

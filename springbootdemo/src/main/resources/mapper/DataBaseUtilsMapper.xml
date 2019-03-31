@@ -16,7 +16,7 @@
     </insert>
     
     <update id="batchUpdate">
-        <foreach collection="updateObjs" item="item" separator=";">
+        <foreach collection="updateObjs" item="item" separator=";" open="" close="">
             update ${tableName}
             <set>
                 <foreach collection="item" index="key" item="value" separator=",">
