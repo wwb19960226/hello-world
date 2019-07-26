@@ -1,5 +1,5 @@
 server:
- port: 8081
+ port: 8096
 
 spring:
   datasource:
@@ -34,6 +34,14 @@ spring:
       min-idle: 1
       max-active: 1000
       max-wait: -1
+  http:
+    encoding.charset: UTF-8
+    encoding.enable: true
+    encoding.force: true
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
 mybatis:
   # 指定全局配置文件位置
   config-location: classpath:mybatis-config.xml

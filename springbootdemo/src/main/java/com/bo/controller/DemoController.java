@@ -36,4 +36,11 @@ public class DemoController {
         return list;
     }
 
+    @RequestMapping("/hello2")
+    public String test02(){
+        String s = new String();
+        System.out.println(s);
+        return "index";
+    }
+
 }
